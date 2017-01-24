@@ -81,6 +81,10 @@ dependencies {
 	testCompile libraries.'junit'
 }
 
+task wrapper(type: Wrapper) {
+	gradleVersion = '2.10'
+}
+
 task sourcesJar(type: Jar, dependsOn: classes) {
 	classifier = 'sources'
 	from sourceSets.main.allSource
@@ -98,32 +102,46 @@ artifacts {
 
 signing { sign configurations.archives }
 
-task createPom {
-	pom{
-		project {
-			name = project.group + ':' + project.name
-			packaging 'jar'
-			description = 'This gradle plugin is used to generate docs for Rest APIs '+
-					'that can be used with swagger-ui. This plugin is equivalent to '+
-					'com.github.kongchen:swagger-maven-plugin'
-			scm {
-				connection 'scm:git:git://github.com/ci-cd/gradle-swagger-plugin.git'
-				developerConnection 'scm:git:ssh://github.com:ci-cd/gradle-swagger-plugin.git'
-				url 'https://github.com/ci-cd/gradle-swagger-plugin'
+uploadArchives {
+	repositories {
+		mavenDeployer {
+			beforeDeployment { MavenDeployment deployment ->
+				signing.signPom(deployment)
 			}
-			licenses {
-				license {
-					name 'The Apache Software License, Version 2.0'
-					url 'http://www.apache.org/licenses/LICENSE-2.0.txt'
-					distribution 'repo'
+
+			repository (url: "https://oss.sonatype.org/service/local/staging/deploy/maven2") {
+				authentication(userName: ossrhUsername, password: ossrhPassword)
+			}
+
+			snapshotRepository(url: "https://oss.sonatype.org/content/repositories/snapshots/") {
+				authentication(userName: ossrhUsername, password: ossrhPassword)
+			}
+
+			pom.project {
+				name = project.group + ':' + project.name
+				packaging 'jar'
+				description 'This gradle plugin is used to generate docs for Rest APIs '+
+						'that can be used with swagger-ui. This plugin is equivalent to '+
+						'com.github.kongchen:swagger-maven-plugin'
+				scm {
+					connection 'scm:git:git://github.com/ci-cd/gradle-swagger-plugin.git'
+					developerConnection 'scm:git:ssh://github.com:ci-cd/gradle-swagger-plugin.git'
+					url 'https://github.com/ci-cd/gradle-swagger-plugin'
 				}
-			}
-			developers {
-				developer {
-					name 'Hari Samala'
-					email 'hari2139@gmail.com'
+				licenses {
+					license {
+						name 'The Apache Software License, Version 2.0'
+						url 'http://www.apache.org/licenses/LICENSE-2.0.txt'
+						distribution 'repo'
+					}
+				}
+				developers {
+					developer {
+						name 'Hari Samala'
+						email 'hari2139@gmail.com'
+					}
 				}
 			}
 		}
-	}.writeTo("pom.xml")
+	}
 }

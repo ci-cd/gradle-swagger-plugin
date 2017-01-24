@@ -17,7 +17,7 @@ class SwaggerDocumentGenerator {
 		GradleDocumentSource documentSource = new GradleDocumentSource(swagger, classLoader)
 
 		documentSource.loadDocuments()
-		documentSource.toDocuments()
+		//documentSource.toDocuments()
 		documentSource.toSwaggerDocuments(swagger.getSwaggerUIDocBasePath())
 	}
 }
