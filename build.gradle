@@ -3,8 +3,9 @@ apply plugin: 'java'
 apply plugin: 'groovy'
 apply plugin: 'idea'
 apply plugin: 'eclipse'
+apply plugin: 'signing'
 
-group = 'com.github.cicd'
+group = 'com.github.ci-cd'
 version = '1.0'
 
 defaultTasks 'install'
@@ -76,3 +77,8 @@ artifacts {
 	archives sourcesJar
 	archives javadocJar
 }
+
+signing {
+	sign configurations.archives
+}
+
