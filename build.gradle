@@ -2,10 +2,10 @@ apply plugin: 'maven'
 apply plugin: 'java'
 apply plugin: 'groovy'
 apply plugin: 'idea'
+apply plugin: 'eclipse'
 
-group = 'com.github.gradle-swagger'
-version = '1.0.2-SNAPSHOT'
-
+group = 'com.github.ci-cd'
+version = '1.0'
 
 defaultTasks 'install'
 
@@ -16,8 +16,8 @@ idea {
     }
 }
 
-sourceCompatibility = 1.7
-targetCompatibility = 1.7
+sourceCompatibility = JavaVersion.VERSION_1_7
+targetCompatibility = JavaVersion.VERSION_1_7
 
 ext {
     libraries = [
@@ -35,10 +35,6 @@ ext {
             'logback':['ch.qos.logback:logback-classic:1.0.13'],
             'junit':['junit:junit:4.11'],
     ]
-}
-
-tasks.withType(Compile) {
-    options.compilerArgs << "-Xlint:unchecked"
 }
 
 repositories {
