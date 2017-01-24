@@ -4,6 +4,8 @@ import org.gradle.api.Project
 import org.gradle.testfixtures.ProjectBuilder
 import org.junit.Test
 
+import com.github.cicd.swagger.docgen.gradleplugin.GenerateSwaggerDocsTask;
+
 import static org.junit.Assert.*
 
 /**

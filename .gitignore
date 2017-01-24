@@ -2,4 +2,7 @@
 .idea/
 target/
 bin/
+.classpath
+.settings
+.project
 
