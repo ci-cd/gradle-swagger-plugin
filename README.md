@@ -20,7 +20,12 @@ This project is forked from dave-ellis/gradle-swagger-plugin. (See https://githu
     apply plugin: 'maven'
     apply plugin: 'swagger'
     apply plugin: 'java'
-
+    
+    dependencies {
+    	compile group: 'com.wordnik', name: 'swagger-annotations', version: '1.3.10'
+    	...
+    }
+    
     swagger {
         endPoints = [
                 'com.foo.bar.apis',
