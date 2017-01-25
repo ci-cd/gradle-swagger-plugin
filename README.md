@@ -5,7 +5,7 @@ This project is forked from dave-ellis/gradle-swagger-plugin. (See https://githu
 
 # Usage
 
-## Maven
+## Gradle
 ```
     buildscript {
         repositories {
@@ -16,10 +16,7 @@ This project is forked from dave-ellis/gradle-swagger-plugin. (See https://githu
             classpath group: 'com.github.ci-cd', name: 'gradle-swagger-plugin', version: '1.0'
         }
     }
-```
 
-## Gradle
-```
     apply plugin: 'maven'
     apply plugin: 'swagger'
     apply plugin: 'java'
