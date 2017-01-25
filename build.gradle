@@ -123,6 +123,7 @@ uploadArchives {
 				description 'This gradle plugin is used to generate docs for Rest APIs '+
 						'that can be used with swagger-ui. This plugin is equivalent to '+
 						'com.github.kongchen:swagger-maven-plugin'
+				url 'https://github.com/ci-cd/gradle-swagger-plugin'
 				scm {
 					connection 'scm:git:git://github.com/ci-cd/gradle-swagger-plugin.git'
 					developerConnection 'scm:git:ssh://github.com:ci-cd/gradle-swagger-plugin.git'

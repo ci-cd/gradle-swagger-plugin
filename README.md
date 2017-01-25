@@ -29,13 +29,10 @@ This project is forked from dave-ellis/gradle-swagger-plugin. (See https://githu
                 'com.foo.bar.apis',
                 'com.foo.bar.apis.internal.Resource'
         ]
-        apiVersion = 'v1'
+        apiVersion = version
         basePath = 'http://www.example.com/rest'
         swaggerUIDocBasePath = '/swagger-ui/rest-api-docs'
-        mustacheFileRoot = "${projectDir}/src/main/resources/"
-        outputTemplate = "${mustacheFileRoot}/strapdown.html.mustache"
         swaggerDirectory = "${buildDir}/site/api-docs"
-        outputPath = "${buildDir}/site/swagger/strapdown.html"
     }
 ```
 
